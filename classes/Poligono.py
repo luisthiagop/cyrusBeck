@@ -2,6 +2,9 @@ from pprint import pprint
 
 from classes.graphics import *
 
+from copy import deepcopy
+
+
 
 class Poligono:
 
@@ -10,12 +13,13 @@ class Poligono:
     normalVetor = []
 
     def makePoligono(self):
-        self.n = 4 #input('numero de lados do poligono: ')
+        self.n = 5 #input('numero de lados do poligono: ')
         self.lado = []
         self.pm = []
         self.lado.append(Line(Point(100, 100), Point(200, 100)))
         self.lado.append(Line(Point(200, 100), Point(200, 200)))
-        self.lado.append(Line(Point(200, 200), Point(100, 200)))
+        self.lado.append(Line(Point(200, 200), Point(150, 250)))
+        self.lado.append(Line(Point(150, 250), Point(100, 200)))
         self.lado.append(Line(Point(100, 200), Point(100, 100)))
         for i in range(int((self.n))):
 
@@ -93,9 +97,12 @@ class Poligono:
 
 
 
-    def drawPoligono(self, janela):
+    def drawPoligono(self, janela = []):
+        lado1 = deepcopy(self)
+        pprint(self.lado)
         for i in range(len(self.lado)):
-            self.lado[i].draw(janela)
+            self.lado[i].draw(janela[0])
+            lado1.lado[i].draw(janela[1])
 
         # for i in range(len(self.normal)):
         #     self.normal[i].draw(janela)

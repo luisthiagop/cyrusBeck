@@ -10,7 +10,7 @@ class Objeto:
         x1 = 10#input('digite x1: ')
         y1 = 10#input('digite y1: ')
         x2 = 300#input('digite x2: ')
-        y2 = 300#input('digite y2: ')
+        y2 = 200#input('digite y2: ')
         self.objetos.append(Line(Point(x1,y1),Point(x2,y2)))
 
     objetoVet = []

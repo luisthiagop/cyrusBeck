@@ -16,8 +16,8 @@ from classes.Poligono import Poligono
 class Main:
 
     def main():
-
-        win = GraphWin("pre",800,800)
+        one_win = GraphWin("pre", 800, 800)
+        two_win = GraphWin("pos", 800, 800)
         # o.drawObjeto(win)
 
         p = Poligono()
@@ -25,19 +25,22 @@ class Main:
         p.calcNormal()
         p.makeVet()
 
-        p.drawPoligono(win)
+        p.drawPoligono([one_win,two_win])
+        # p.drawPoligono(two_win)
         p.defineF()
         o = Objeto()
         o.makeObjeto()
         o.makeVet()
         p.defineW(o)
-        o.drawObjeto(win)
+        o.drawObjeto(one_win)
 
 
         cb = CyrusBeck()
-        cb.algoritmo(p.w,o.objetoVet,p.f,p.normalVetor,o.objetos,p)
+        novas  =  cb.algoritmo(p.w,o.objetoVet,p.f,p.normalVetor,o.objetos,p)
 
-        win.getMouse()
+        novas.draw(two_win)
+        one_win.getMouse()
+        two_win.getMouse()
 
 
 

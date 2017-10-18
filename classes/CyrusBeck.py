@@ -6,12 +6,15 @@ from classes.graphics import *
 
 from classes.graphics import GraphWin
 
+from copy import copy
+
 
 class CyrusBeck:
 
     tU = 1
     tL = 0
     t = 0
+    novalinha = Line(Point(0,0),Point(0,0))
 
     def algoritmo(self,w,d,f,n,linhas,poligono):
 
@@ -46,7 +49,7 @@ class CyrusBeck:
         if (self.tL >= self.tU):
             print ("Segmento Rejeitado")
         elif( (cont == int(len(n)))):
-            novalinha = Line(
+            self.novalinha = Line(
                 Point(
                     linhas[0].p1.x+(linhas[0].p2.x-linhas[0].p1.x)*self.tL,
                     linhas[0].p1.y + (linhas[0].p2.y - linhas[0].p1.y) * self.tL
@@ -57,9 +60,7 @@ class CyrusBeck:
                 )
             )
 
-        win = GraphWin("pos", 800, 800)
-
-        novalinha.draw(win)
+        return self.novalinha
 
 
 
